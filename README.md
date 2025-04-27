@@ -1,14 +1,6 @@
 # 🧬 Bioinformatics Pipeline for the Analysis of Human Whole Genome Sequencing (WGS) Data Using PacBio HiFi
 
-This repository contains the implementation of a bioinformatics pipeline for assembling and analysing human whole genome sequencing data using long-read PacBio HiFi technology. The main objective is to compare different assembly strategies (reference-based alignment using GRCh38 and T2T, and a *de novo* assembly) as well as assess their impact on the detection of genetic variation, from single-nucleotide variants (SNVs) to structural variation (SVs).
-
----
-## 🎯 Project Objectives
-
-- Develop a reproducible pipeline for processing PacBio HiFi whole-genome sequencing data  
-- Compare multiple genome assembly strategies and reference genomes  
-- Evaluate the impact of each strategy on the detection of SNVs and SVs  
-- Provide insights into the structural representation of the human genome using long-read sequencing
+This repository contains the implementation of a bioinformatics pipeline for assembling and analysing human whole genome sequencing data using long-read PacBio HiFi technology. The objective is to compare different assembly strategies (reference-based alignment using GRCh38 and T2T, and a *de novo* assembly) as well as assess their impact on the detection of genetic variation, from single-nucleotide variants (SNVs) to structural variation (SVs).
 
 ---
 
@@ -49,8 +41,8 @@ This repository contains the implementation of a bioinformatics pipeline for ass
 ## 👩‍🔬 Author
 
 **Alison Díaz Cuevas**  
-Bachelor’s Student in Genomic Biotechnology  
-Laboratory for Research in Human Genomics (LIIGH), UNAM  
+Bachelor’s Student in Genomic Biotechnology at Autonomous University of Nuevo Leon, Mexico
+Thesis Project developed at the International Laboratory for Human Genome Research (LIIGH), UNAM  
 Supervisor: **Dr. Claudia Gonzaga Jáuregui**
 
 ---
@@ -59,6 +51,7 @@ Supervisor: **Dr. Claudia Gonzaga Jáuregui**
 
 For questions, feedback, or collaboration inquiries:  
 📧 alison.m.b.g@gmail.com
+📧 cgonzaga@liigh.unam.mx
 
 ---
 
