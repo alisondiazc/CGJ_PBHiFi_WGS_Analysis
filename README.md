@@ -1,6 +1,6 @@
 # 🧬 Bioinformatics Pipeline for the Analysis of Human Whole Genome Sequencing (WGS) Data Using PacBio HiFi
 
-This repository contains the implementation of a bioinformatics pipeline for assembling and analysing human whole genome sequencing data using long-read PacBio HiFi technology. The main objective is to compare different assembly strategies (reference-based alignment using GRCh38 and T2T, and *de novo* assembly) and assess their impact on the detection of genetic variation, including single-nucleotide variants (SNVs) and structural variants (SVs).
+This repository contains the implementation of a bioinformatics pipeline for assembling and analysing human whole genome sequencing data using long-read PacBio HiFi technology. The main objective is to compare different assembly strategies (reference-based alignment using GRCh38 and T2T, and a *de novo* assembly) as well as assess their impact on the detection of genetic variation, from single-nucleotide variants (SNVs) to structural variation (SVs).
 
 ---
 ## 🎯 Project Objectives
