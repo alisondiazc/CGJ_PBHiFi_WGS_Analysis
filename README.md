@@ -1,4 +1,5 @@
-# 🧬 Bioinformatics Pipeline for the Analysis of Human Whole Genome Sequencing (WGS) Data Using PacBio HiFi
+# 🧬 Bioinformatic Pipeline for Comparative Analysis of Whole Genome Assembly Strategies Using PacBio HiFi Human Data
+
 
 This repository contains the implementation of a bioinformatics pipeline for assembling and analysing human whole genome sequencing data using long-read PacBio HiFi technology. The objective is to compare different assembly strategies (reference-based alignment using GRCh38 and T2T, and a *de novo* assembly) as well as assess their impact on the detection of genetic variation, from single-nucleotide variants (SNVs) to structural variation (SVs).
 
@@ -41,7 +42,7 @@ This repository contains the implementation of a bioinformatics pipeline for ass
 ## 👩‍🔬 Author
 
 **Alison Díaz Cuevas**  
-Bachelor’s Student in Genomic Biotechnology at Autonomous University of Nuevo Leon, Mexico
+Bachelor’s Student in Genomic Biotechnology at the Autonomous University of Nuevo Leon, Mexico
 Thesis Project developed at the International Laboratory for Human Genome Research (LIIGH), UNAM  
 Supervisor: **Dr. Claudia Gonzaga Jáuregui**
 
