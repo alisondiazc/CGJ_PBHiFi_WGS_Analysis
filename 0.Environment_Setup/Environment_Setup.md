@@ -18,7 +18,7 @@ This structure reflects the output format of the PacBio Sequel IIe system, which
 mkdir reads
 # Create a subdirectory for each Sequencing Cell
 cd reads
-mkdir Cell-1
-mkdir Cell-2
-mkdir Cell-3
+mkdir Cell-1 Cell-2 Cell-3
 ```
+## 2. Populate Cell Directories with Sequencing Data
+
