@@ -2,11 +2,11 @@
 *** 
 
 ## Overview
-Stepts to follow in order to prepare the environment and organize the raw PacBio HiFi reads for downstream analysis. 
+Steps to follow in order to prepare the environment and organize the raw PacBio HiFi reads for downstream analysis. 
 It includes instructions for creating directory structures, downloading and converting `.bam` to `.fastq`, and merging the resulting reads into a single file.
 
 ### Requirements 
-[bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment
+- [bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment
 *** 
 
 ## 1. Create directory structure for raw reads
