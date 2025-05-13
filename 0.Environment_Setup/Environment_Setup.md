@@ -21,7 +21,7 @@ cd reads
 mkdir Cell-1 Cell-2 Cell-3
 ```
 ## 2. Retrieve raw `.bam` Sequencing Files
-> **Note:** You may need to adjust this step depending on your setup's appropriate storage location and transfer method. 
+> **Note:** You may need to adjust this step depending on your setup's appropriate storage location and transfer method.
 In this example, we download the raw `.bam` files directly from the BYU server, which performed the sequencing. You need to complete the command with your user, password, and whole path to where the files are stored. 
 ```bash
 # Navigate to the main directory
