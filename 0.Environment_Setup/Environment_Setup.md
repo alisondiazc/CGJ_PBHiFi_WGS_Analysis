@@ -10,15 +10,9 @@ It includes instructions for creating directory structures, downloading and conv
 *** 
 
 ## 1. Create a directory for raw reads
-In this step, we create a main directory (`reads/`) containing one subdirectory per sequencing cell. 
-This structure reflects the output format of the PacBio Sequel IIe system, which generates a separate file for each cell.
-> **Note:** This structure may need to be adapted depending on the sequencing platform used and the number of cells generated during the run.
 ```bash
 # Create the main directory
 mkdir reads/
-# Create a subdirectory for each Sequencing Cell
-cd reads/
-mkdir Cell-1 Cell-2 Cell-3
 ```
 ## 2. Retrieve raw `.bam` Sequencing Files
 In this example, we download the raw `.bam` files directly from the BYU server, which performed the sequencing. 
