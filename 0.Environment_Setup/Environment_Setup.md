@@ -21,15 +21,24 @@ cd reads
 mkdir Cell-1 Cell-2 Cell-3
 ```
 ## 2. Retrieve raw `.bam` Sequencing Files
-In this example, we download the raw `.bam` files directly from the BYU server, which performed the sequencing. You need to complete the command with your user, password, and whole path to where the files are stored. 
+In this example, we download the raw `.bam` files directly from the BYU server, which performed the sequencing. 
+Ensure to complete the command with your user, password, and the whole path to where the files are stored. 
 > **Note:** You may need to adjust this step depending on your setup's appropriate storage location and transfer method.
 ```bash
 # Navigate to the main directory
 cd reads
-# Download raw data
+# Download raw data (Repeat for Each Cell File)
 wget --user [USER] --password [PASSWORD] https://files.rc.byu.edu/[wholepath] .
 ```
-## 3. 
+## 3. Convert .bam files to .fastq format
+Since PacBio uses unaligned BAM (uBAM) files as its native format for read storage, converting them to fastq format is necessary to enable compatibility with downstream analysis tools. 
+Ensure to complete the filename with your own .bam file
+```bash
+# Converting bam to fastq (Repeat for Each Cell File)
+bam2fastq [filename].bam
+```
+
+
 
 ## 2. Populate Cell Directories with Sequencing Data
 We will need to place each raw 
