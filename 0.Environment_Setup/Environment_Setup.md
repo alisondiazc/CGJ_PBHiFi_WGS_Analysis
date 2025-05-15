@@ -44,7 +44,8 @@ chmod +x Environment_Setup.sh
 # Execute the script
 ./Environment_Setup.sh
 ```
-The script will: 
+
+### The script will: 
 - Create a directory to place the raw reads
 - Convert ubam files to fastq format
 - Merge all fastq files into one
