@@ -1,13 +1,14 @@
 # 0. Environment Setup 
 *** 
 
-## Overview
-This guide contains instructions for preparing the environment and organizing raw PacBio HiFi reads for downstream genome analysis. It includes steps for setting up the directory structure, retrieving and converting ubam files, and merging Cell reads into a unified FASTQ file.
+# Overview
+This guide contains instructions for preparing the environment and organizing raw PacBio HiFi reads for downstream genome analysis. The steps are: setting up the directory structure, retrieving and converting ubam files, and merging Cell reads into a unified FASTQ file.
 
-### Requirements 
+# Requirements 
 - [bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment
 *** 
 
+# Steps
 ## 1. Set an environment variable for the project 
 To simplify navigation and ensure consistency throughout the workflow, we will define an environment variable called PROJECT_DIR pointing to the project's root directory. 
 Ensure to replace the text inside the brackets with the absolute path to your project folder.
@@ -15,7 +16,7 @@ Ensure to replace the text inside the brackets with the absolute path to your pr
 export PROJECT_DIR=[full path to the project main directory]
 # Example: PROJECT_DIR=/home/adiazc/PacBio-HiFi-Pipeline
 ```
-### Make the environmental variable persistent across sessions
+### Make the environmental variable persistent across sessions - Optional
 By default, environment variables are only available in the current terminal session. To make PROJECT_DIR persistent across future sessions, add it to your .bashrc file as follows 
 > **Note:** Be careful, the .bashrc file is a system configuration file and therefore sensitive to changes; make sure you have the necessary permissions and create a backup before making changes.
 ```bash
@@ -28,20 +29,33 @@ export PROJECT_DIR=[full path to the project main directory]
 source ~/.bashrc
 # Restart the terminal
 ```
-## 2. Create a directory for raw reads
-```bash
-mkdir $PROJECT_DIR/reads/
-```
-## 3. Retrieve raw `.bam` Sequencing Files
+## 2. Retrieve raw `.bam` Sequencing Files
 In this step, we download the raw .bam files directly from the BYU server responsible for the sequencing.
 Make sure to replace the text inside the brackets with your actual username, password, and the full URL path to each file.
 > **Note:** This step may vary depending on your data storage location and transfer method. If your files were provided through another method, adjust accordingly.
 ```bash
 # Navigate to the reads directory
-cd $PROJECT_DIR/reads/
+cd $PROJECT_DIR
 # Download raw data (repeat for each sequencing cell file)
 wget --user [USER] --password [PASSWORD] https://files.rc.byu.edu/[wholepath] 
 ```
+## 3. Run the Environment_Setup bash script 
+Download the Environment_Setup.sh file from the repository and place it into $PROJECT_DIR/reads/. Within that directory, execute the script as follows: 
+```bash
+# Give the script execution permissions
+chmod +x Environment_Setup.sh
+# Execute the script
+./Environment_Setup.sh
+```
+The script will: 
+- Ensure 
+
+
+
+
+
+
+
 ## 4. Convert .bam files to .fastq format
 Since PacBio uses unaligned BAM (ubam) files as its native format for storing raw reads, we will convert them to the standard .fastq format to enable compatibility with most downstream analysis tools. 
 Ensure to replace the text inside the brackets with the name of the ubam file
