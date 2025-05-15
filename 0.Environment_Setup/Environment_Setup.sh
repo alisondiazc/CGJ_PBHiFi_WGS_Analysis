@@ -6,8 +6,8 @@ if [ -z "$PROJECT_DIR" ]; then
   exit 1
 fi
 
-# Set sample name (modify this as needed)
-SAMPLE_NAME="PYM007"
+# Set sample name
+SAMPLE_NAME="PYM007" # <-- Edit this line with your sample name
 
 # Create a directory for Raw reads
 mkdir "$PROJECT_DIR/Raw_reads"
