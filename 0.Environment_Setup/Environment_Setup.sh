@@ -14,9 +14,19 @@ cd "$PROJECT_DIR/Raw_reads"
 for bam_file in *.bam; do
   if [ -f "$bam_file" ]; then
     bam2fastq "$bam_file"
-    
+    echo "Conversion from BAM to FASTQ completed."
   else
-    echo "⚠️ No BAM files found in $PROJECT_DIR/reads/"
+    echo "Error: No BAM files found in Raw_reads directory"
     exit 1
   fi
 done
+
+# Merge all .fastq files into one
+if [ -f *.fastq ]; then
+  cat *.fastq > merged_raw_reads.fastq
+  gzip merged_raw_reads.fastq
+  echo "FASTQ file merging and compression completed. Concatenated file: merged_raw_reads.fastq"
+else
+  echo "Error: No FASTQ files found in Raw_reads directory"
+  exit 1
+fi
