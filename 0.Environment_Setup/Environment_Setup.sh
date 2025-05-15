@@ -10,4 +10,13 @@ fi
 mkdir "$PROJECT_DIR/Raw_reads"
 cd "$PROJECT_DIR/Raw_reads"
 
-#
+# Convert ubam files in reads/ to .fastq
+for bam_file in *.bam; do
+  if [ -f "$bam_file" ]; then
+    echo "📦 Converting $bam_file to FASTQ..."
+    bam2fastq "$bam_file"
+  else
+    echo "⚠️ No BAM files found in $PROJECT_DIR/reads/"
+    exit 1
+  fi
+done
