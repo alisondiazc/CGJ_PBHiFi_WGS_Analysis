@@ -6,6 +6,9 @@ if [ -z "$PROJECT_DIR" ]; then
   exit 1
 fi
 
+# Set sample name (modify this as needed)
+SAMPLE_NAME="PYM007"
+
 # Create a directory for Raw reads
 mkdir "$PROJECT_DIR/Raw_reads"
 mv "$PROJECT_DIR"/*.bam "$PROJECT_DIR/Raw_reads/"
@@ -24,9 +27,9 @@ done
 
 # Merge all .fastq files into one
 if [ -f *.fastq ]; then
-  cat *.fastq > merged_raw_reads.fastq
-  gzip merged_raw_reads.fastq
-  echo "FASTQ file merging and compression completed. Concatenated file: merged_raw_reads.fastq"
+  cat *.fastq > "${SAMPLE_NAME}_merged_raw_reads.fastq"
+  gzip "${SAMPLE_NAME}_merged_raw_reads.fastq"
+  echo "FASTQ file merging and compression completed. Concatenated file: ${SAMPLE_NAME}_merged_raw_reads.fastq"
 else
   echo "Error: No FASTQ files found in Raw_reads directory"
   exit 1
