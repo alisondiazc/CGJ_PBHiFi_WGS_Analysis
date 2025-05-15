@@ -1,4 +1,4 @@
-# 🧬 Bioinformatic Pipeline for Comparative Analysis of Whole Genome Assembly Strategies Using PacBio HiFi Human Data
+# Bioinformatic Pipeline for Comparative Analysis of Whole Genome Assembly Strategies Using PacBio HiFi Human Data
 
 
 This repository contains the implementation of a bioinformatics pipeline for assembling and analysing human whole genome sequencing data using long-read PacBio HiFi technology. The objective is to compare different assembly strategies (reference-based alignment using GRCh38 and T2T, and a *de novo* assembly) as well as assess their impact on the detection of genetic variation, from single-nucleotide variants (SNVs) to structural variation (SVs).
