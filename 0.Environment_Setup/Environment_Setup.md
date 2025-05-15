@@ -35,9 +35,9 @@ cd $PROJECT_DIR
 wget --user [USER] --password [PASSWORD] https://files.rc.byu.edu/[wholepath] 
 ```
 ## 3. Run the Environment_Setup bash script 
-3.1. Download the Environment_Setup.sh file from the repository and place it into $PROJECT_DIR/ 
-3.2. Open the Environment_Setup.sh file and update the SAMPLE_NAME variable with your sample name. Make sure to save the file before closing it. 
-3.3. Execute the script as follows: 
+- 3.1. Download the Environment_Setup.sh file from the repository and place it into $PROJECT_DIR/
+- 3.2. Open the Environment_Setup.sh file and update the SAMPLE_NAME variable with your sample name. Make sure to save the file before closing it.
+- 3.3. Execute the script as follows: 
 ```bash
 # Give the script execution permissions
 chmod +x Environment_Setup.sh
