@@ -8,6 +8,7 @@ fi
 
 # Create reads/ directory
 mkdir "$PROJECT_DIR/Raw_reads"
+mv "$PROJECT_DIR"/*.bam "$PROJECT_DIR/Raw_reads/"
 cd "$PROJECT_DIR/Raw_reads"
 
 # Convert ubam files in reads/ to .fastq
