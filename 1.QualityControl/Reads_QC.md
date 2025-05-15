@@ -11,6 +11,12 @@
   ```
 *** 
 
+> **Note:** Before running this step, make sure the environment variable PROJECT_DIR is properly defined. To verify that it is set correctly, you can run:  
+```bash
+echo $PROJECT_DIR
+```
+> If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration.
+
 ## 1. Set an environment variable for the project 
 To simplify navigation and ensure consistency throughout the workflow, we will define an environment variable called PROJECT_DIR pointing to the project's root directory. 
 Ensure to replace the text inside the brackets with the absolute path to your project folder.
