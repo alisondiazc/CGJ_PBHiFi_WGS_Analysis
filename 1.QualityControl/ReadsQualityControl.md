@@ -4,11 +4,11 @@
 - [LongQC](https://github.com/yfukasawa/LongQC) program installed and accessible in your environment
 - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) program installed and accessible in your environment
 > If you're using the LAVIS Cluster, load the programs as follows:
-```bash
-module load anaconda3/2021.05
-module load longqc/1.2.0
-module load fastqc/0.11.3
-```
+  ```bash
+  module load anaconda3/2021.05
+  module load longqc/1.2.0
+  module load fastqc/0.11.3
+  ```
 *** 
 
 ## 1. Set an environment variable for the project 
