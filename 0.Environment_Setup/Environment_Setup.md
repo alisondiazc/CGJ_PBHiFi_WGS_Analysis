@@ -5,7 +5,6 @@
 - [bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment
 *** 
 
-# Steps
 ## 1. Set an environment variable for the project 
 To simplify navigation and ensure consistency throughout the workflow, we will define an environment variable called PROJECT_DIR pointing to the project's root directory. 
 Ensure to replace the text inside the brackets with the absolute path to your project folder.
