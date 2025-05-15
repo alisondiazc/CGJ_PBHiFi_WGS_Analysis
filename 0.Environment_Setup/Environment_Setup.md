@@ -1,9 +1,6 @@
 # 0. Environment Setup 
 *** 
 
-# Overview
-This guide contains instructions for preparing the environment and organizing raw PacBio HiFi reads for downstream genome analysis. The steps are: setting up the directory structure, retrieving and converting ubam files, and merging Cell reads into a unified FASTQ file.
-
 # Requirements 
 - [bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment
 *** 
