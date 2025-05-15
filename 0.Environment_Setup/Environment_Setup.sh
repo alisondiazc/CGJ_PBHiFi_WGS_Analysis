@@ -6,7 +6,7 @@ if [ -z "$PROJECT_DIR" ]; then
   exit 1
 fi
 
-# Create reads/ directory
+# Create a directory for Raw reads
 mkdir "$PROJECT_DIR/Raw_reads"
 mv "$PROJECT_DIR"/*.bam "$PROJECT_DIR/Raw_reads/"
 cd "$PROJECT_DIR/Raw_reads"
