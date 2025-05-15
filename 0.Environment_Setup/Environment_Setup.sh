@@ -29,7 +29,7 @@ done
 if [ -f *.fastq ]; then
   cat *.fastq > "${SAMPLE_NAME}_merged_raw_reads.fastq"
   gzip "${SAMPLE_NAME}_merged_raw_reads.fastq"
-  echo "FASTQ file merging and compression completed. Concatenated file: ${SAMPLE_NAME}_merged_raw_reads.fastq"
+  echo "FASTQ file merging and compression completed. Concatenated file: ${SAMPLE_NAME}_merged_raw_reads.fastq.gz"
 else
   echo "Error: No FASTQ files found in Raw_reads directory"
   exit 1
