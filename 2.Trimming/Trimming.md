@@ -19,4 +19,25 @@ echo $PROJECT_DIR
 > If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration. Refer to step 0 for detailed instructions. 
 *** 
 
-## 1. Download Reads_QC.sh bash script
+## 1. Download Trimming.sh bash script
+Download the Trimming.sh file from the repository and place it into $PROJECT_DIR/
+
+## 2. OPTIONAL - Set up HiFiAdapterFilt arguments
+Open the Trimming.sh file and update the following arguments in the "Run HiFiAdapterFilt section" if needed. Make sure to save the file before closing it.
+> -l: minimum length of adapter match to remove
+> -m: minimum percent match of adapter to remove
+> -t: number of threads
+
+## 3. Run Trimming.sh bash script
+Before running the script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq 
+```bash
+# Give the script execution permissions
+chmod +x Trimming.sh
+# Execute the script
+./Trimming.sh [Sample1]_merged_reads.fastq [Sample2]_merged_reads.fastq
+```
+### The script will: 
+- Create directories to place HiFiAdapterFilt output files
+- Run HiFiAdapterFilt with 
+*** 
+
