@@ -6,21 +6,43 @@ if [ -z "$PROJECT_DIR" ]; then
   exit 1
 fi
 
-# Environment Set Up
-mkdir -p "$PROJECT_DIR/Reads_QC"
+# Check that at least one input file was provided
+if [ "$#" -lt 1 ]; then
+  echo "Error: No input files provided."
+  exit 1
+fi
+
+# Environment set-up
 mkdir -p "$PROJECT_DIR/Reads_QC/LongQC"
 mkdir -p "$PROJECT_DIR/Reads_QC/FastQC"
-
-# Define variables 
-LONGQC="/cm/shared/apps/longqc/LongQC-1.2.0/longQC.py" # <-- Edit this line with the full path to the longQC.py script (not necessary if you're working on the LAVIS cluster)
-SAMPLE_NAME="PYM007" # <-- Edit this line with your sample name
+LONGQC="/cm/shared/apps/longqc/LongQC-1.2.0/longQC.py" # <-- Edit this line with the full path to the longQC.py script if you're not working on the LAVIS cluster
 THREADS=20 # <-- Edit this line  with the number of threads according to your system's resources
-OUTPUT_DIR="$PROJECT_DIR/Reads_QC/LongQC"
-INPUT="$PROJECT_DIR/Raw_reads/${SAMPLE_NAME}_merged_raw_reads.fastq"
 
-# LongQC run 
-python "$LONGQC" sampleqc -x pb-hifi -s "$SAMPLE_NAME" -p "$THREADS" -o "$OUTPUT_DIR" "$INPUT"
+# Quality Control for each sample
+for INPUT in "$@"; do
+  if [ ! -f "$INPUT" ]; then
+    echo "Skipping: $INPUT file not found."
+    continue
+  fi
+  
+  # Extract sample name from file name
+  SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_raw_reads\.fastq//;s/\.fastq//;s/\.gz//')
+  
+  # Set output directory for LongQC
+  LONGQC_OUT="$PROJECT_DIR/Reads_QC/LongQC/$SAMPLE_NAME"
+  mkdir -p "$LONGQC_OUT"
+  
+  # Run LongQC
+  echo "Running LongQC for $SAMPLE_NAME"
+  python "$LONGQC" sampleqc -x pb-hifi -s "$SAMPLE_NAME" -p "$THREADS" -o "$LONGQC_OUT" "$INPUT"
 
-# FastQC run 
-cd "$PROJECT_DIR/Reads_QC/FastQC"
-fastqc "$INPUT" 
+  # Set output directory for FastQC
+  FASTQC_OUT="$PROJECT_DIR/Reads_QC/FastQC/$SAMPLE_NAME"
+  mkdir -p "$FASTQC_OUT"
+
+  # Run FastQC
+  echo "Running FastQC for $SAMPLE_NAME"
+  fastqc -o "$FASTQC_OUT" "$INPUT"
+
+  echo "Successful QC for $SAMPLE_NAME"
+done
