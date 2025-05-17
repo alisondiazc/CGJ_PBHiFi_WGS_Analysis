@@ -1,5 +1,5 @@
 # 1. Quality Control of the Reads 
-*** 
+
 ## Requirements 
 - [LongQC](https://github.com/yfukasawa/LongQC) v.1.2.0 or later installed and accessible in your environment
 - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) v.0.11.3 or later installed and accessible in your environment
@@ -9,6 +9,7 @@
   module load longqc/1.2.0
   module load fastqc/0.11.3
   ```
+*** 
 > **Note:** Before running this step, make sure the environment variable PROJECT_DIR is properly defined. To verify that it is set correctly, you can run:  
 ```bash
 echo $PROJECT_DIR
