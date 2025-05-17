@@ -38,6 +38,6 @@ chmod +x Trimming.sh
 ```
 ### The script will: 
 - Create directories to place HiFiAdapterFilt output files
-- Run HiFiAdapterFilt with 
+- Run HiFiAdapterFilt
 *** 
 
