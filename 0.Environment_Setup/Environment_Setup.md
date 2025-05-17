@@ -1,7 +1,7 @@
 # 0. Environment Setup 
 
 # Requirements 
-- [bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment
+- [bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment -> ***Only required if using Step 3***
 *** 
 
 ## 1. Set an environment variable for the project 
