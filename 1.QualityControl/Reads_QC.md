@@ -28,7 +28,7 @@ Open the Environment_Setup.sh file and update the following variables if needed:
 Make sure to save the file before closing it.
 
 ## 3. Run Reads_QC.sh bash script
-Before running the script, make sure to replace the text inside the brackets with your sample names. The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq 
+Before running the script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq 
 ```bash
 # Give the script execution permissions
 chmod +x Reads_QC.sh
