@@ -1,6 +1,6 @@
 # 1. Quality Control of the Reads 
 
-# Requirements 
+## Requirements 
 - [LongQC](https://github.com/yfukasawa/LongQC) v.1.2.0 or later installed and accessible in your environment
 - [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) v.0.11.3 or later installed and accessible in your environment
 > If you're using the LAVIS Cluster, load the programs as follows:
