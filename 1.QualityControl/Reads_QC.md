@@ -21,7 +21,7 @@ echo $PROJECT_DIR
 Download the Reads_QC.sh file from the repository and place it into $PROJECT_DIR/
 
 ## 2. OPTIONAL - Set up Reads_QC.sh variables
-Open the Environment_Setup.sh file and update the following variables if needed:
+Open the Reads_QC.sh file and update the following variables if needed:
 - LONGQC: Full path to the longQC.py script
 - THREADS: Number of cores used for the analysis
 Make sure to save the file before closing it.
