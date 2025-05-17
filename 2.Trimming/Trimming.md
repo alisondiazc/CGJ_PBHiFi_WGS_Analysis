@@ -24,9 +24,9 @@ Download the Trimming.sh file from the repository and place it into $PROJECT_DIR
 
 ## 2. OPTIONAL - Set up HiFiAdapterFilt arguments
 Open the Trimming.sh file and update the following arguments in the "Run HiFiAdapterFilt section" if needed. Make sure to save the file before closing it.
-> -l: minimum length of adapter match to remove
-> -m: minimum percent match of adapter to remove
-> -t: number of threads
+- `-l`: minimum length of adapter match to remove  
+- `-m`: minimum percent match of adapter to remove  
+- `-t`: number of threads
 
 ## 3. Run Trimming.sh bash script
 Before running the script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq 
