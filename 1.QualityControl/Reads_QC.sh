@@ -35,6 +35,7 @@ for INPUT in "$@"; do
   # Run LongQC
   echo "Running LongQC for $SAMPLE_NAME"
   python "$LONGQC" sampleqc -x pb-hifi -s "$SAMPLE_NAME" -p "$THREADS" -o "$LONGQC_OUT" "$INPUT"
+  echo "Quality Control with LongQC for $SAMPLE_NAME completed. Output files at $LONGQC_OUT"
 
   # Set output directory for FastQC
   FASTQC_OUT="$PROJECT_DIR/Reads_QC/FastQC/$SAMPLE_NAME"
@@ -43,6 +44,5 @@ for INPUT in "$@"; do
   # Run FastQC
   echo "Running FastQC for $SAMPLE_NAME"
   fastqc -o "$FASTQC_OUT" "$INPUT"
-
-  echo "Successful QC for $SAMPLE_NAME"
+  echo "Quality Control with FastQC for $SAMPLE_NAME completed. Output files at $FASTQC_OUT"
 done
