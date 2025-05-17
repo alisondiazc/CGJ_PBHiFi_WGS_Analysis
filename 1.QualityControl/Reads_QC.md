@@ -1,8 +1,8 @@
 # 1. Quality Control of the Reads 
 
 # Requirements 
-- [LongQC](https://github.com/yfukasawa/LongQC) v.1.2.0 program or later installed and accessible in your environment
-- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) v.0.11.3 or later program installed and accessible in your environment
+- [LongQC](https://github.com/yfukasawa/LongQC) v.1.2.0 or later installed and accessible in your environment
+- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) v.0.11.3 or later installed and accessible in your environment
 > If you're using the LAVIS Cluster, load the programs as follows:
   ```bash
   module load anaconda3/2021.05
