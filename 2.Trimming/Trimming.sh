@@ -14,6 +14,7 @@ fi
 
 # Environment set-up
 mkdir -p "$PROJECT_DIR/Reads_Trimming"
+cd "$PROJECT_DIR"
 
 # Trimming process for each sample
 for INPUT in "$@"; do
@@ -25,17 +26,15 @@ for INPUT in "$@"; do
   # Extract sample name from file name
   SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_raw_reads\.fastq//;s/\.fastq//;s/\.gz//')
 
-  # Set output directory
-  TRIMMING_OUT="$PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME"
-  mkdir -p "$TRIMMING_OUT"
-
   # Run HiFiAdapterFilt
-  echo "Running LongQC for $SAMPLE_NAME"
-  pbadapterfilt.sh \
-    -p ./ \ 
-    -l 44 \ <-- Minimum Length of adapter match to remove. 
-    -m 97 \ <-- Minimum percent Match of adapter to remove
-    -t 20 \ <-- Number of threads
-    -o "$TRIMMING_OUT"
-  echo "Trimming for $SAMPLE_NAME completed. Output files at $TRIMMING_OUT"
+  ## -l: minimum Length of adapter match to remove
+  ## -m: minimum percent match of adapter to remove
+  ## -t: number of threads
+  pbadapterfilt.sh -p "${SAMPLE_NAME}_merged_raw_reads" -l 44 -m 97 -t 20 -o "${SAMPLE_NAME}_trimmed"
+
+  # Move results to a specific folder
+  mkdir -p "$PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME"
+  mv "${SAMPLE_NAME}_trimmed"* "$PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME/"
+  echo "Trimming for $SAMPLE_NAME completed. Output files at $PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME/"
+
 done
