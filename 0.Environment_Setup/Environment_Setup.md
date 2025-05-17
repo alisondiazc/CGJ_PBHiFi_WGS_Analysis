@@ -24,10 +24,10 @@ export PROJECT_DIR=[full path to the project main directory]
 source ~/.bashrc
 # Restart the terminal
 ```
-## 2. Retrieve raw `.bam` Sequencing Files
-In this step, we download the raw .bam files directly from the BYU server responsible for the sequencing.
+## 2. Retrieve raw Sequencing Files
+In this step, we download the raw read files directly from the BYU server responsible for the sequencing.
 Make sure to replace the text inside the brackets with your actual username, password, and the full URL path to each file.
-> **Note:** This step may vary depending on your data storage location and transfer method. If your files were provided through another method, adjust accordingly.
+> **Note:** This step may vary depending on your data storage location and transfer method. If your files were provided through another method or format, adjust accordingly.
 ```bash
 # Navigate to the reads directory
 cd $PROJECT_DIR
