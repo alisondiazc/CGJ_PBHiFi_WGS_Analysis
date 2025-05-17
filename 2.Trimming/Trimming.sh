@@ -27,7 +27,7 @@ for INPUT in "$@"; do
   SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_raw_reads\.fastq//;s/\.fastq//;s/\.gz//')
 
   # Run HiFiAdapterFilt
-  ## -l: minimum Length of adapter match to remove
+  ## -l: minimum length of adapter match to remove
   ## -m: minimum percent match of adapter to remove
   ## -t: number of threads
   pbadapterfilt.sh -p "${SAMPLE_NAME}_merged_raw_reads" -l 44 -m 97 -t 20 -o "${SAMPLE_NAME}_trimmed"
