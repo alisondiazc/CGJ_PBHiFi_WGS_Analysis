@@ -21,24 +21,23 @@ echo $PROJECT_DIR
 ## 1. Download Reads_QC.sh bash script
 Download the Reads_QC.sh file from the repository and place it into $PROJECT_DIR/
 
-## 2. Set up Reads_QC.sh variables
+## 2. OPTIONAL - Set up Reads_QC.sh variables
 Open the Environment_Setup.sh file and update the following variables if needed:
 - LONGQC: Full path to the longQC.py script
-- SAMPLE_NAME: Sample name (The same as in step 0)
 - THREADS: Number of cores used for the analysis
 Make sure to save the file before closing it.
 
 ## 3. Run Reads_QC.sh bash script
-Execute the script as follows:
+Before running the script, make sure to replace the text inside the brackets with your sample names. The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq 
 ```bash
 # Give the script execution permissions
 chmod +x Reads_QC.sh
 # Execute the script
-./Reads_QC.sh
+./Reads_QC.sh [Sample1]_merged_reads.fastq [Sample2]_merged_reads.fastq
 ```
 
 ### The script will: 
 - Create directories to place LongQC & FastQC output files
-- Run LongQC with pb-hifi preset
+- Run LongQC with the pb-hifi preset
 - Run FastQC
 *** 
