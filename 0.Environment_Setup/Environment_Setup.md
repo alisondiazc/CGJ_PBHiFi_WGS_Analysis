@@ -11,7 +11,7 @@ Ensure to replace the text inside the brackets with the absolute path to your pr
 export PROJECT_DIR=[full path to the project main directory]
 # Example: PROJECT_DIR=/home/adiazc/PacBio-HiFi-Pipeline
 ```
-### 1.1. OPTIONAL - Make the environmental variable persistent across sessions 
+### OPTIONAL - Make the environmental variable persistent across sessions 
 By default, environment variables are only available in the current terminal session. To make PROJECT_DIR persistent across future sessions, add it to your .bashrc file as follows 
 > **Note:** Be careful, the .bashrc file is a system configuration file and therefore sensitive to changes; ensure you have the necessary permissions and create a backup before making changes.
 ```bash
