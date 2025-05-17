@@ -15,7 +15,7 @@
 ```bash
 echo $PROJECT_DIR
 ```
-> If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration.
+> If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration. Refer to step 0 for detailed instructions.
 *** 
 
 ## 1. Download Reads_QC.sh bash script
