@@ -10,9 +10,9 @@ fi
 SAMPLE_NAME="PYM007" # <-- Edit this line with your sample name
 
 # Create a directory for Raw reads
-mkdir "$PROJECT_DIR/Raw_reads"
-mv "$PROJECT_DIR"/*.bam "$PROJECT_DIR/Raw_reads/"
-cd "$PROJECT_DIR/Raw_reads"
+mkdir "$PROJECT_DIR/Unmerged_reads"
+mv "$PROJECT_DIR"/*.bam "$PROJECT_DIR/Unmerged_reads/"
+cd "$PROJECT_DIR/Unmerged_reads"
 
 # Convert ubam files in reads/ to .fastq
 for bam_file in *.bam; do
@@ -27,10 +27,13 @@ done
 
 # Merge all .fastq files into one
 if [ -f *.fastq ]; then
-  cat *.fastq > "${SAMPLE_NAME}_merged_raw_reads.fastq"
-  gzip "${SAMPLE_NAME}_merged_raw_reads.fastq"
-  echo "FASTQ file merging and compression completed. Concatenated file: ${SAMPLE_NAME}_merged_raw_reads.fastq.gz"
+  cat *.fastq > "${SAMPLE_NAME}_merged_reads.fastq"
+  gzip "${SAMPLE_NAME}_merged_reads.fastq"
+  echo "FASTQ file merging and compression completed. Concatenated file: ${SAMPLE_NAME}_merged_reads.fastq.gz"
 else
   echo "Error: No FASTQ files found in Raw_reads directory"
   exit 1
 fi
+
+# Move the merged fastq file to the main directory 
+mv ${SAMPLE_NAME}_merged_reads.fastq.gz "$PROJECT_DIR"
