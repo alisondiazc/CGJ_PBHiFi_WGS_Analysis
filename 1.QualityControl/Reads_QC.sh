@@ -15,8 +15,10 @@ fi
 # Environment set-up
 mkdir -p "$PROJECT_DIR/Reads_QC/LongQC"
 mkdir -p "$PROJECT_DIR/Reads_QC/FastQC"
-LONGQC="/cm/shared/apps/longqc/LongQC-1.2.0/longQC.py" # <-- Edit this line with the full path to the longQC.py script if you're not working on the LAVIS cluster
-THREADS=20 # <-- Edit this line  with the number of threads according to your system's resources
+## Edit the next line with the full path to the longQC.py script if you're not working on the LAVIS cluster
+LONGQC="/cm/shared/apps/longqc/LongQC-1.2.0/longQC.py" 
+## Edit this line  with the number of threads according to your system's resources
+THREADS=20
 
 # Quality Control for each sample
 for INPUT in "$@"; do
