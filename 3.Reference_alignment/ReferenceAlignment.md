@@ -34,5 +34,11 @@ echo $PROJECT_DIR
 > If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration. Refer to step 0 for detailed instructions. 
 *** 
 
-## 1. Download Trimming.sh bash script
-Download the Trimming.sh file from the repository and place it into $PROJECT_DIR/
+## 1. Download GRCh38_alignment.sh or CHM13_T2T_alignment.sh bash script
+Download the corresponding script from the repository depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory. 
+
+## 2. OPTIONAL - Set up script arguments
+Open the Trimming.sh file and update the following arguments in the "Run HiFiAdapterFilt section" if needed. Make sure to save the file before closing it.
+
+## Run GRCh38_alignment.sh or CHM13_T2T_alignment.sh bash script
+Before running the respective script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq
