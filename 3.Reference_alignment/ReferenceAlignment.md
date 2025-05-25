@@ -1,4 +1,4 @@
-# 2. Read Alignment to Reference Genomes
+# 3. Read Alignment to Reference Genomes
 
 ## Requirements
 ### Genome Alignment Process
