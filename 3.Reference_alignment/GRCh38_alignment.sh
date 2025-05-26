@@ -28,8 +28,7 @@ for INPUT in "$@"; do
   fi
 
   # Extract sample name from file name 
-  
-
+  SAMPLE_NAME=$(basename "$INPUT" | sed 's/\.filt\.fastq\.gz$//; s/\.fastq\.gz$//; s/\.fastq$//')
 
 
 
