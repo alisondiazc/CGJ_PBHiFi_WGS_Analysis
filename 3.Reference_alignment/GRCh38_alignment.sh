@@ -13,20 +13,26 @@ if [ "$#" -lt 1 ]; then
 fi
 
 # Environment set-up
+## Create output directory
 mkdir -p "$PROJECT_DIR/GRCh38_alignment"
 cd "$PROJECT_DIR"
+## Path to reference genome files (adjust if needed)
+REF_FASTA=/mnt/Timina/cgonzaga/resources/GRCh38.14/Homo_sapiens_GRCh38.p14.noMT.names.fasta
+REF_INDEX=/mnt/Timina/cgonzaga/resources/GRCh38.14/Homo_sapiens_GRCh38.p14.noMT.names.fasta.fai
 
-
-
-
-
-# Trimming process for each sample
+# Alignment of Reads to GRCh38 for Each Sample
 for INPUT in "$@"; do
   if [ ! -f "$INPUT" ]; then
     echo "Skipping: $INPUT file not found."
     continue
   fi
+
+  # Extract sample name from file name 
   
+
+
+
+
   # Extract sample name from file name
   SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_raw_reads\.fastq//;s/\.fastq//;s/\.gz//')
 
