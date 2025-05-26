@@ -24,13 +24,13 @@ for INPUT in "$@"; do
   fi
   
   # Extract sample name from file name
-  SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_raw_reads\.fastq//;s/\.fastq//;s/\.gz//')
+  SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_reads\.fastq//;s/\.fastq//;s/\.gz//')
 
   # Run HiFiAdapterFilt
   ## -l: minimum length of adapter match to remove
   ## -m: minimum percent match of adapter to remove
   ## -t: number of threads
-  pbadapterfilt.sh -p "${SAMPLE_NAME}_merged_raw_reads" -l 44 -m 97 -t 20 -o "${SAMPLE_NAME}_trimmed"
+  pbadapterfilt.sh -p "${SAMPLE_NAME}_merged_reads" -l 44 -m 97 -t 20 -o "${SAMPLE_NAME}_trimmed"
 
   # Move results to a specific folder
   mkdir -p "$PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME"
