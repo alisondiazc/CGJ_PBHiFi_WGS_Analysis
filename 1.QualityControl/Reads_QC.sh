@@ -28,8 +28,7 @@ for INPUT in "$@"; do
   fi
   
   # Extract sample name from file name
-  SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_reads\.fastq//;s/\.fastq//;s/\.gz//')
-  
+  SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_reads\.fastq\.gz$//; s/_merged_reads\.fastq$//; s/\.fastq\.gz$//; s/\.fastq$//')
   # Set output directory for LongQC
   LONGQC_OUT="$PROJECT_DIR/Reads_QC/LongQC/$SAMPLE_NAME"
   mkdir -p "$LONGQC_OUT"
