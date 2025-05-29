@@ -1,4 +1,5 @@
 # 1. Quality Control of the Reads 
+*** 
 
 ## Requirements 
 - [LongQC](https://github.com/yfukasawa/LongQC) v.1.2.0 or later installed and accessible in your environment
@@ -10,22 +11,23 @@
   module load fastqc/0.11.3
   ```
 *** 
-> **Note:** Before running this step, make sure the environment variable PROJECT_DIR is properly defined. To verify that it is set correctly, you can run:  
+
+## Instructions
+> **Note:** Before proceeding with the following steps, ensure that the PROJECT_DIR environment variable is properly defined. To verify that it is set correctly, you can run:  
 ```bash
 echo $PROJECT_DIR
 ```
 > If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration. Refer to step 0 for detailed instructions.
-*** 
 
-## 1. Download Reads_QC.sh bash script
+### 1. Download Reads_QC.sh bash script
 Download the Reads_QC.sh file from the repository and place it into $PROJECT_DIR/
 
-## 2. OPTIONAL - Set up Reads_QC.sh variables
+### 2. OPTIONAL - Set up Reads_QC.sh variables
 Open the Reads_QC.sh file and update the following variables if needed. Make sure to save the file before closing it.
 - `LONGQC`: Full path to the longQC.py script
 - `THREADS`: Number of cores used for the analysis
 
-## 3. Run Reads_QC.sh bash script
+### 3. Run Reads_QC.sh bash script
 Before running the script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq 
 ```bash
 # Give the script execution permissions
@@ -33,6 +35,7 @@ chmod +x Reads_QC.sh
 # Execute the script
 ./Reads_QC.sh [Sample1]_merged_reads.fastq [Sample2]_merged_reads.fastq
 ```
+*** 
 
 ### The script will: 
 - Create directories to place LongQC & FastQC output files
