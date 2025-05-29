@@ -35,7 +35,7 @@ chmod 777 pafCoordsDotPlotly.R
 *** 
 
 ## Instructions
-**Note:** Before proceeding with the following steps, ensure that the PROJECT_DIR environment variable is properly defined. To verify that it is set correctly, you can run:  
+> **Note:** Before proceeding with the following steps, ensure that the PROJECT_DIR environment variable is properly defined. To verify that it is set correctly, you can run:  
 ```bash
 echo $PROJECT_DIR
 ```
@@ -49,4 +49,10 @@ Open the Trimming.sh file and update the following arguments in the "Run HiFiAda
 
 ### 3. Run GRCh38_alignment.sh or CHM13_T2T_alignment.sh bash script
 Before running the respective script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq
+*** 
+
+### The script will: 
+- Create directories to place LongQC & FastQC output files
+- Run LongQC with the pb-hifi preset
+- Run FastQC
 *** 
