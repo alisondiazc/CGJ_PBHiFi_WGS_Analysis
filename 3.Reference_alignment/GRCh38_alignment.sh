@@ -19,6 +19,8 @@ cd "$PROJECT_DIR"
 ## Path to reference genome files (adjust if needed)
 ### Note: The index file (*.fai) has to be in the same directory as the Reference
 REF_FASTA=/mnt/Timina/cgonzaga/resources/GRCh38.14/Homo_sapiens_GRCh38.p14.noMT.names.fasta
+# Path to plot-dist.py mosdepth script
+PLOT_DIST=$PROJECT_DIR/scripts/plot-dist.py
 
 # Alignment of Reads to GRCh38 for Each Sample
 for INPUT in "$@"; do
@@ -37,9 +39,14 @@ for INPUT in "$@"; do
   pbmm2 align --sort -j 20 --preset HIFI --log-level INFO "$REF_FASTA" "$INPUT" "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/${SAMPLE_NAME}.GRCh38.pbmm2.bam"
   echo "Alignment of $SAMPLE_NAME to GRCH38 completed. Output files at $PROJECT_DIR/GRCh38_alignment/"
 
-  # 
-
-
+  # Quality Control process of the obtained alignment (adjust or delete steps if needed)
+  ## Coverage analysis with Mosdepth
+  ### -t: number of threads
+  echo "Starting the coverage analysis of $SAMPLE_NAME aligment vs GRCh38 with mosdepth"
+  mkdir -p "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/mosdepth"
+  cd "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/mosdepth"
+  mosdepth -t 20 -n "${SAMPLE_NAME}.GRCh38" "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/${SAMPLE_NAME}.GRCh38.pbmm2.bam"
+  
   
 
 
