@@ -33,7 +33,7 @@ chmod 777 pafCoordsDotPlotly.R
   ```
 *** 
 
-> **Note:** Before running this step, make sure the environment variable PROJECT_DIR is properly defined. To verify that it is set correctly, you can run:  
+**Note:** Before proceeding with the following steps, ensure that the PROJECT_DIR environment variable is properly defined. To verify that it is set correctly, you can run:  
 ```bash
 echo $PROJECT_DIR
 ```
