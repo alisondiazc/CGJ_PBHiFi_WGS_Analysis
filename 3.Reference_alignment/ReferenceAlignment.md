@@ -1,4 +1,5 @@
 # 3. Read Alignment to Reference Genomes
+*** 
 
 ## Requirements
 ### Genome Alignment Process
@@ -39,7 +40,6 @@ chmod 777 pafCoordsDotPlotly.R
 echo $PROJECT_DIR
 ```
 > If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration. Refer to step 0 for detailed instructions. 
-*** 
 
 ### 1. Download GRCh38_alignment.sh or CHM13_T2T_alignment.sh bash script
 Download the corresponding script from the repository depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory. 
@@ -49,3 +49,4 @@ Open the Trimming.sh file and update the following arguments in the "Run HiFiAda
 
 ### 3. Run GRCh38_alignment.sh or CHM13_T2T_alignment.sh bash script
 Before running the respective script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq
+*** 
