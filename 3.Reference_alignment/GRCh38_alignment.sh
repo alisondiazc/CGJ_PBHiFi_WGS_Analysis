@@ -17,8 +17,8 @@ fi
 mkdir -p "$PROJECT_DIR/GRCh38_alignment"
 cd "$PROJECT_DIR"
 ## Path to reference genome files (adjust if needed)
+### Note: The index file (*.fai) has to be in the same directory as the Reference
 REF_FASTA=/mnt/Timina/cgonzaga/resources/GRCh38.14/Homo_sapiens_GRCh38.p14.noMT.names.fasta
-REF_INDEX=/mnt/Timina/cgonzaga/resources/GRCh38.14/Homo_sapiens_GRCh38.p14.noMT.names.fasta.fai
 
 # Alignment of Reads to GRCh38 for Each Sample
 for INPUT in "$@"; do
@@ -29,12 +29,22 @@ for INPUT in "$@"; do
 
   # Extract sample name from file name 
   SAMPLE_NAME=$(basename "$INPUT" | sed 's/\.filt\.fastq\.gz$//; s/\.fastq\.gz$//; s/\.fastq$//')
+  mkdir -p "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME"
+
+  # Align reads with pbmm2
+  ## -j: number of threads
+  echo "Starting the alignment of $SAMPLE_NAME reads against GRCh38 human reference"
+  pbmm2 align --sort -j 20 --preset HIFI --log-level INFO "$REF_FASTA" "$INPUT" "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/${SAMPLE_NAME}.GRCh38.pbmm2.bam"
+  echo "Alignment of $SAMPLE_NAME to GRCH38 completed. Output files at $PROJECT_DIR/GRCh38_alignment/"
+
+  # 
+
+
+  
 
 
 
-  # Extract sample name from file name
-  SAMPLE_NAME=$(basename "$INPUT" | sed 's/_merged_raw_reads\.fastq//;s/\.fastq//;s/\.gz//')
-
+  
   # Run HiFiAdapterFilt
   ## -l: minimum length of adapter match to remove
   ## -m: minimum percent match of adapter to remove
