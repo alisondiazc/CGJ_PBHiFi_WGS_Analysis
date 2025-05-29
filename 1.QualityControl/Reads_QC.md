@@ -1,4 +1,4 @@
-# 1. Quality Control of the Reads 
+# Quality Control of the Reads 
 *** 
 
 ## Requirements 
