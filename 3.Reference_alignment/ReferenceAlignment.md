@@ -93,6 +93,6 @@ echo $PROJECT_DIR
 - Evaluate the consensus sequence with assembly-stats
 - Align the consensus sequence back to the reference genome using minimap2 to obtain a paf file
 - Generate a coverage plot of the paf file with pafr
-- Generate a dot plot of the reference vs the obtained alignment using `dotPlotly`
-- Assess the quality of the consensus assembly with `QUAST`
+- Generate a dot plot of the reference vs the obtained alignment using dotPlotly
+- Assess the quality of the consensus assembly with QUAST
 *** 
