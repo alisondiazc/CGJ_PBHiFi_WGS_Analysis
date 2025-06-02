@@ -46,9 +46,11 @@ echo $PROJECT_DIR
 
 ### 1. Read alignment against a reference genome (GRCh38/CHM13-T2T)
 1. Download the corresponding script from the repository, depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory
+
    > GRCh38_alignment.sh for read alignment against GRCh38 reference genome
    > CHM13-T2T_alignment.sh for read aligment against CHM13-T2T reference genome
-2. eee
+
+3. eee
 
 
 Download the corresponding script from the repository depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory. 
