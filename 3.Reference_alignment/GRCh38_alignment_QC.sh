@@ -23,6 +23,8 @@ PLOT_DIST=$PROJECT_DIR/scripts/plot-dist.py
 DotPlot_SCRIPT=$PROJECT_DIR/scripts/pafCoordsDotPlotly.R
 # Path to quast.py script (adjust if needed)
 QUAST_SCRIPT=$PROJECT_DIR/scripts/quast.py
+# Path to pafr_plotting.R script (adjust if needed)
+PAFR_SCRIPT=$PROJECT_DIR/scripts/pafr_plotting.R
 
 # Quality Control of each alignment against GRCh38 (adjust or delete steps if needed)
 for INPUT in "$@"; do
@@ -61,7 +63,13 @@ for INPUT in "$@"; do
   ## -t: number of threads
   minimap2 -x asm5 -L --secondary=no -t 20 "$REF_FASTA" "${SAMPLE_NAME}.GRCh38.cons.fa" > "${SAMPLE_NAME}.GRCh38.cons.mm2.paf"
   echo "Consensus sequence statistics for $SAMPLE_NAME generated. Output file at $PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/"
-
+  
+  # Coverage plot generation with pafr
+  echo "Starting coverage plotting of $SAMPLE_NAME consensus to GRCh38 with pafr"
+  mkdir -p "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/pafr"
+  Rscript "$PAFR_SCRIPT" "${SAMPLE_NAME}.GRCh38.cons.mm2.paf" "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/pafr/${SAMPLE_NAME}.GRCh38.covplot.png"
+  echo "Coverage plot for $SAMPLE_NAME consensus to GRCh38 generated. Output file at $PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/pafr"
+  
   # Dot plot generation with dotPlotly
   echo "Starting dot plot of $SAMPLE_NAME consensus sequence to GRCh38 using dotPlotly"
   mkdir -p "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/dotPlotly"
