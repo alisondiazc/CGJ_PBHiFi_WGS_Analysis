@@ -25,14 +25,14 @@ module load minimap2/2.24
   ```
 ### Post-Alignment Quality Control scripts
 - [mosdepth](https://github.com/brentp/mosdepth) script `plot-dist.py` accessible in your environment
-- [dotPlotly](https://github.com/tpoorten/dotPlotly) script `pafCoordsDotPlotly.R` accessible in your environment
 - [QUAST](https://quast.sourceforge.net/) script `quast.py` accessible in your environment
+- [dotPlotly](https://github.com/tpoorten/dotPlotly) script `pafCoordsDotPlotly.R` accessible in your environment
 - `pafr_plotting.R` script (included in this repository) accessible in your environment
 > Once downloaded, you will need to change the permissions of the files as follows:
   ```bash
 chmod 777 plot-dist.py
-chmod 777 pafCoordsDotPlotly.R
 chmod 777 quast.py
+chmod 777 pafCoordsDotPlotly.R
 chmod 777 pafr_plotting.R
   ```
 *** 
@@ -70,9 +70,9 @@ echo $PROJECT_DIR
 
 2. Configure the script by editing the required variables throughout the file:
    - `REF_FASTA`: Full path to the reference genome `.fasta` file. **Note:** The corresponding index file (`.fai`) has to be located in the same directory as the FASTA file.
-   - `PLOT_DIST`: Full path to the `plot-dist.py` mosdepth script 
-   - `DotPlot_SCRIPT`: Full path to the `pafCoordsDotPlotly.R` dotPlotly script
+   - `PLOT_DIST`: Full path to the `plot-dist.py` mosdepth script
    - `QUAST_SCRIPT`: Full path to the `quast.py` script
+   - `DotPlot_SCRIPT`: Full path to the `pafCoordsDotPlotly.R` dotPlotly script
    - `PAFR_SCRIPT`: Full path to the `pafr_plotting.R` script
    - `-t`: Number of threads
    - `--secondary`: Controls whether secondary alignments are reported
@@ -90,9 +90,8 @@ echo $PROJECT_DIR
 - Align reads to  the selected reference genome (GRCh38 or CHM13-T2T) using pbmm2
 - Calculate coverage statistics with mosdepth and generate coverage distribution plots
 - Generate a consensus sequence from the aligned reads using samtools
-- Evaluate the consensus sequence with assembly-stats
+- Evaluate the consensus sequence with assembly-stats and QUAST
 - Align the consensus sequence back to the reference genome using minimap2 to obtain a paf file
 - Generate a coverage plot of the paf file with pafr
-- Generate a dot plot of the reference vs the obtained alignment using dotPlotly
-- Assess the quality of the consensus assembly with QUAST
+- Generate a dot plot of the paf file using dotPlotly
 *** 
