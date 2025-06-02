@@ -24,10 +24,10 @@ module load assembly-stats/1.0.1
 module load minimap2/2.24
   ```
 ### Post-Alignment Quality Control scripts
-- [mosdepth](https://github.com/brentp/mosdepth) script plot-dist.py accessible in your environment
-- [dotPlotly](https://github.com/tpoorten/dotPlotly) script pafCoordsDotPlotly.R accessible in your environment
-- [QUAST](https://quast.sourceforge.net/) script quast.py accessible in your environment
-- pafr_plotting.R script (included in this repository) accessible in your environment
+- [mosdepth](https://github.com/brentp/mosdepth) script `plot-dist.py` accessible in your environment
+- [dotPlotly](https://github.com/tpoorten/dotPlotly) script `pafCoordsDotPlotly.R` accessible in your environment
+- [QUAST](https://quast.sourceforge.net/) script `quast.py` accessible in your environment
+- `pafr_plotting.R` script (included in this repository) accessible in your environment
 > Once downloaded, you will need to change the permissions of the files as follows:
   ```bash
 chmod 777 plot-dist.py
@@ -51,11 +51,10 @@ echo $PROJECT_DIR
    - `CHM13-T2T_alignment.sh` for aligning reads to CHM13-T2T reference genome
 
 2. Configure the script by editing the variables listed in the **"Environment set-up"** and **"# Reads alignment with pbmm2"** sections:
-   - `REF_FASTA`: Full path to the reference genome .fasta file. **Note:** The corresponding index file (`.fai`) has to be located in the same directory as the FASTA file.
+   - `REF_FASTA`: Full path to the reference genome `.fasta` file. **Note:** The corresponding index file (`.fai`) has to be located in the same directory as the FASTA file.
    - `-j`: Number of threads
 
-3. Run the script as follows, replacing the text inside the brackets. **Note:** The script supports multiple inputs, but each file must follow the naming convention `*.fastq` (raw reads) or `*_merged_reads.fastq` (trimmed reads).
-
+3. Run the script as follows, replacing the text inside brackets. **Note:** The script supports multiple inputs, but each file must follow the naming convention `*.fastq` (raw reads) or `*_merged_reads.fastq` (trimmed reads).
    ```bash
    # Give the script execution permissions
    chmod +x [Reference_Genome]_alignment.sh
@@ -65,21 +64,35 @@ echo $PROJECT_DIR
 
 ### 2. Quality Control of the obtained genome alignment 
 
+1. Download the appropriate QC script from this repository, based on the reference genome you used in the previous step, and place it in the `$PROJECT_DIR/` directory:
+   - `GRCh38_alignment_QC.sh` for GRCh38-based alignment
+   - `CHM13-T2T_alignment_QC.sh` for CHM13-T2T-based alignment
 
+2. Configure the script by editing the required variables throughout the file:
+   - `REF_FASTA`: Full path to the reference genome `.fasta` file. **Note:** The corresponding index file (`.fai`) has to be located in the same directory as the FASTA file.
+   - `PLOT_DIST`: Full path to the `plot-dist.py` mosdepth script 
+   - `DotPlot_SCRIPT`: Full path to the `pafCoordsDotPlotly.R` dotPlotly script
+   - `QUAST_SCRIPT`: Full path to the `quast.py` script
+   - `PAFR_SCRIPT`: Full path to the `pafr_plotting.R` script
+   - `-t`: Number of threads
+   - `--secondary`: Controls whether secondary alignments are reported
 
-
-
-
-### 2. OPTIONAL - Set up script arguments
-Open the Trimming.sh file and update the following arguments in the "Run HiFiAdapterFilt section" if needed. Make sure to save the file before closing it.
-
-### 3. Run GRCh38_alignment.sh or CHM13_T2T_alignment.sh bash script
-Before running the respective script, make sure to replace the text inside the brackets with your sample name(s). The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq
-
+3. Run the script as follows, replacing the text inside brackets. **Note:** The script supports multiple inputs, but each file must follow the naming convention `*.GRCh38.pbmm2.bam` or `*.CHM13-T2T.pbmm2.bam`.
+   ```bash
+   # Give the script execution permissions
+   chmod +x [Reference_Genome]_alignment_QC.sh
+   # Run the script
+   ./[Reference_Genome]_alignment_QC.sh [Sample1].[Reference_Genome].pbmm2.bam [Sample2].[Reference_Genome].pbmm2.bam
+   ```
 *** 
 
-### The script will: 
-- Create directories to place LongQC & FastQC output files
-- Run LongQC with the pb-hifi preset
-- Run FastQC
+### The scripts will: 
+- Align reads to  the selected reference genome (GRCh38 or CHM13-T2T) using pbmm2
+- Calculate coverage statistics with mosdepth and generate coverage distribution plots
+- Generate a consensus sequence from the aligned reads using samtools
+- Evaluate the consensus sequence with assembly-stats
+- Align the consensus sequence back to the reference genome using minimap2 to obtain a paf file
+- Generate a coverage plot of the paf file with pafr
+- Generate a dot plot of the reference vs the obtained alignment using `dotPlotly`
+- Assess the quality of the consensus assembly with `QUAST`
 *** 
