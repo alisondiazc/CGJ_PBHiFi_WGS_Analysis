@@ -45,14 +45,12 @@ echo $PROJECT_DIR
 > If the output shows the correct path, you're ready to proceed. If it returns nothing, you'll need to export it again or check your shell configuration. Refer to step 0 for detailed instructions.
 
 ### 1. Read alignment against a reference genome (GRCh38/CHM13-T2T)
-1. Download the corresponding script from the repository, depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory
-  - `GRCh38_alignment.sh` for read alignment against GRCh38 reference genome
-  - `CHM13-T2T_alignment.sh` for read aligment against CHM13-T2T reference genome
+1.1. Download the corresponding script from the repository, depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory
+    - `GRCh38_alignment.sh` for read alignment against GRCh38 reference genome
+    - `CHM13-T2T_alignment.sh` for read aligment against CHM13-T2T reference genome
+1.2. Set up the script arguments listed in the "Environment set-up" section
+    - 
 
-3. eee
-
-
-Download the corresponding script from the repository depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory. 
 
 ### 2. Quality Control of the obtained genome alignment 
 
