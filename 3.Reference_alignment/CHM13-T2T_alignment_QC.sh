@@ -19,10 +19,10 @@ cd "$PROJECT_DIR"
 REF_FASTA=/mnt/Timina/cgonzaga/resources/T2T_2.0/chm13v2.0.noMT.names.fa
 # Path to plot-dist.py mosdepth script (adjust if needed)
 PLOT_DIST=$PROJECT_DIR/scripts/plot-dist.py
-# Path to pafCoordsDotPlotly.R dotPlotly script (adjust if needed)
-DotPlot_SCRIPT=$PROJECT_DIR/scripts/pafCoordsDotPlotly.R
 # Path to quast.py script (adjust if needed)
 QUAST_SCRIPT=$PROJECT_DIR/scripts/quast.py
+# Path to pafCoordsDotPlotly.R dotPlotly script (adjust if needed)
+DotPlot_SCRIPT=$PROJECT_DIR/scripts/pafCoordsDotPlotly.R
 # Path to pafr_plotting.R script (adjust if needed)
 PAFR_SCRIPT=$PROJECT_DIR/scripts/pafr_plotting.R
 
@@ -57,29 +57,29 @@ for INPUT in "$@"; do
   assembly-stats "${SAMPLE_NAME}.CHM13-T2T.cons.fa" > "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/assembly-stats/${SAMPLE_NAME}.CHM13-T2T.cons.stats"
   echo "Consensus sequence statistics for $SAMPLE_NAME generated. Output file at $PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/assembly-stats"
 
+  # Genome quality report generation with QUAST 
+  echo "Generating quality report for $SAMPLE_NAME consensus sequence with QUAST"
+  ## -t: number of threads
+  python "$QUAST_SCRIPT" -t 20 --large -o "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/QUAST" -r "$REF_FASTA" "${SAMPLE_NAME}.CHM13-T2T.cons.fa"
+  echo "Quality report for $SAMPLE_NAME consensus sequence generated. Output files at $PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/QUAST"
+
   # Consensus sequence alignment to the Reference Genome with Minimap2
   echo "Starting alignment of $SAMPLE_NAME consensus to CHM13-T2T with Minimap2"
   ## --secondary: enables reporting of secondary alignments
   ## -t: number of threads
   minimap2 -x asm5 -L --secondary=no -t 20 "$REF_FASTA" "${SAMPLE_NAME}.CHM13-T2T.cons.fa" > "${SAMPLE_NAME}.CHM13-T2T.cons.mm2.paf"
   echo "Consensus sequence statistics for $SAMPLE_NAME generated. Output file at $PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/"
+
+  # Dot plot generation with dotPlotly
+  echo "Starting dot plot of $SAMPLE_NAME consensus sequence to CHM13-T2T using dotPlotly"
+  mkdir -p "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/dotPlotly"
+  "$DotPlot_SCRIPT" -i "${SAMPLE_NAME}.CHM13-T2T.cons.mm2.paf" -o "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/dotPlotly/${SAMPLE_NAME}.CHM13-T2T" -s -t -l
+  echo "Dot plot of $SAMPLE_NAME consensus alignment to CHM13-T2T generated. Outputs at $PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/dotPlotly"
   
   # Coverage plot generation with pafr
   echo "Starting coverage plotting of $SAMPLE_NAME consensus to CHM13-T2T with pafr"
   mkdir -p "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/pafr"
   Rscript "$PAFR_SCRIPT" "${SAMPLE_NAME}.CHM13-T2T.cons.mm2.paf" "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/pafr/${SAMPLE_NAME}.CHM13-T2T.covplot.png"
   echo "Coverage plot for $SAMPLE_NAME consensus to CHM13-T2T generated. Output file at $PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/pafr"
-  
-  # Dot plot generation with dotPlotly
-  echo "Starting dot plot of $SAMPLE_NAME consensus sequence to CHM13-T2T using dotPlotly"
-  mkdir -p "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/dotPlotly"
-  "$DotPlot_SCRIPT" -i "${SAMPLE_NAME}.CHM13-T2T.cons.mm2.paf" -o "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/dotPlotly/${SAMPLE_NAME}.CHM13-T2T" -s -t -l
-  echo "Dot plot of $SAMPLE_NAME consensus alignment to CHM13-T2T generated. Outputs at $PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/dotPlotly"
-
-  # Genome quality report generation with QUAST 
-  echo "Generating quality report for $SAMPLE_NAME consensus sequence with QUAST"
-  ## -t: number of threads
-  python "$QUAST_SCRIPT" -t 20 --large -o "$PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/QUAST" -r "$REF_FASTA" "${SAMPLE_NAME}.CHM13-T2T.cons.fa"
-  echo "Quality report for $SAMPLE_NAME consensus sequence generated. Output files at $PROJECT_DIR/CHM13-T2T_alignment/$SAMPLE_NAME/QUAST"
 
 done
