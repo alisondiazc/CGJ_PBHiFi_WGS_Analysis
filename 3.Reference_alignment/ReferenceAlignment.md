@@ -46,52 +46,22 @@ echo $PROJECT_DIR
 
 ### 1. Read Alignment Against a Reference Genome (GRCh38 or CHM13-T2T)
 
-1. Download the appropriate script based on the reference genome you plan to use, and place it inside your `$PROJECT_DIR/` directory:
-   - `GRCh38_alignment.sh` — for aligning reads to the GRCh38 reference genome  
-   - `CHM13-T2T_alignment.sh` — for aligning reads to the CHM13-T2T reference genome
+1. Download the appropriate script from this repository, based on the reference genome you plan to use, and place it in the `$PROJECT_DIR/` directory:
+   - `GRCh38_alignment.sh` for aligning reads to GRCh38 reference genome  
+   - `CHM13-T2T_alignment.sh` for aligning reads to CHM13-T2T reference genome
 
 2. Configure the script by editing the variables listed in the **"Environment set-up"** and **"# Reads alignment with pbmm2"** sections:
-   - `REF_FASTA`: Full path to the reference genome FASTA file  
-     > **Note:** The corresponding index file (`.fai`) must be located in the same directory as the FASTA file.
-   - `-j`: Number of threads to use during alignment
+   - `REF_FASTA`: Full path to the reference genome .fasta file. **Note:** The corresponding index file (`.fai`) has to be located in the same directory as the FASTA file.
+   - `-j`: Number of threads
 
-3. Run the script. You can provide one or multiple input files. Each file must follow the naming convention `*_merged_reads.fastq`.
+3. Run the script as follows, replacing the text inside the brackets. **Note:** The script supports multiple inputs, but each file must follow the naming convention `*.fastq` (raw reads) or `*_merged_reads.fastq` (trimmed reads).
 
    ```bash
    # Give the script execution permissions
    chmod +x [Reference_Genome]_alignment.sh
-
    # Run the script
    ./[Reference_Genome]_alignment.sh [Sample1].fastq [Sample2].fastq
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 1. Read alignment against a reference genome (GRCh38/CHM13-T2T)
-1.1. Download the corresponding script from the repository, depending on which reference genome you intend to align the reads to, and place it in the $PROJECT_DIR/ directory
-  - `GRCh38_alignment.sh` for read alignment against GRCh38 reference genome
-  - `CHM13-T2T_alignment.sh` for read aligment against CHM13-T2T reference genome
-1.2. Set up the script variables and arguments listed in the "Environment set-up" and "# Reads alignment with pbmm2" sections
-  - `REF_FASTA`: path to the reference genome fasta file - Note: The index file (*.fai) has to be in the same directory as this file
-  - `-j`: number of threads
-1.3. Run the script as follows, ensuring to replace the text inside the brackets with your sample or genome reference name(s). Note: The script supports multiple samples, but each input file must follow the naming format of *_merged_reads.fastq
-```bash
-# Give the script execution permissions
-chmod +x [Reference_Genome]_alignment.sh
-# Execute the script
-./[Reference_Genome]_alignment.sh [Sample1].fastq [Sample2].fastq
-```
-Note: the script can be run with the raw or trimmed read files (.fastq) depending of the quality of the reads. 
+   ```
 
 ### 2. Quality Control of the obtained genome alignment 
 
