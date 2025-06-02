@@ -27,7 +27,7 @@ module load minimap2/2.24
 - [mosdepth](https://github.com/brentp/mosdepth) script plot-dist.py accessible in your environment
 - [dotPlotly](https://github.com/tpoorten/dotPlotly) script pafCoordsDotPlotly.R accessible in your environment
 - [QUAST](https://quast.sourceforge.net/) script quast.py accessible in your environment
-- pafr_plotting.R script (within this repository) accessible in your environment
+- pafr_plotting.R script (included in this repository) accessible in your environment
 > Once downloaded, you will need to change the permissions of the files as follows:
   ```bash
 chmod 777 plot-dist.py
