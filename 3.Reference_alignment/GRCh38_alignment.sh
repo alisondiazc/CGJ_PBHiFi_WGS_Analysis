@@ -23,6 +23,8 @@ REF_FASTA=/mnt/Timina/cgonzaga/resources/GRCh38.14/Homo_sapiens_GRCh38.p14.noMT.
 PLOT_DIST=$PROJECT_DIR/scripts/plot-dist.py
 # Path to pafCoordsDotPlotly.R dotPlotly script (adjust if needed)
 DotPlot_SCRIPT=$PROJECT_DIR/scripts/pafCoordsDotPlotly.R
+# Path to quast.py script (adjust if needed)
+QUAST_SCRIPT=$PROJECT_DIR/scripts/quast.py
 
 # Alignment of Reads to GRCh38 for Each Sample
 for INPUT in "$@"; do
@@ -72,30 +74,15 @@ for INPUT in "$@"; do
   echo "Consensus sequence statistics for $SAMPLE_NAME generated. Output file at $PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/"
 
   # Dot plot generation with dotPlotly
-  echo "Starting dot plot of $SAMPLE_NAME consensus alignment to GRCh38 using dotPlotly"
+  echo "Starting dot plot of $SAMPLE_NAME consensus sequence to GRCh38 using dotPlotly"
   mkdir -p "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/dotPlotly"
   "$DotPlot_SCRIPT" -i "$SAMPLE_NAME.GRCh38.cons.mm2.paf" -o "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/dotPlotly/$SAMPLE_NAME.GRCh38" -s -t -l
   echo "Dot plot of $SAMPLE_NAME consensus alignment to GRCh38 generated. Outputs at $PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/dotPlotly"
 
   # Genome quality report generation with QUAST 
-  echo "Starting dot plot of $SAMPLE_NAME consensus alignment to GRCh38 using dotPlotly"
-
-
-
-
-
-
-  
-  
-  # Run HiFiAdapterFilt
-  ## -l: minimum length of adapter match to remove
-  ## -m: minimum percent match of adapter to remove
+  echo "Generating quality report for $SAMPLE_NAME consensus sequence with QUAST"
   ## -t: number of threads
-  pbadapterfilt.sh -p "${SAMPLE_NAME}_merged_raw_reads" -l 44 -m 97 -t 20 -o "${SAMPLE_NAME}_trimmed"
-
-  # Move results to a specific folder
-  mkdir -p "$PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME"
-  mv "${SAMPLE_NAME}_trimmed"* "$PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME/"
-  echo "Trimming for $SAMPLE_NAME completed. Output files at $PROJECT_DIR/Reads_Trimming/$SAMPLE_NAME/"
+  python "$QUAST_SCRIPT" -t 20 --large -o "$PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/QUAST" -r "$REF_FASTA" "$SAMPLE_NAME.GRCh38.cons.fa"
+  echo "Quality report for $SAMPLE_NAME consensus sequence generated. Output files at $PROJECT_DIR/GRCh38_alignment/$SAMPLE_NAME/QUAST"
 
 done
