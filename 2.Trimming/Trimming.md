@@ -42,4 +42,6 @@ chmod +x Trimming.sh
 ### The script will: 
 - Create directories to place HiFiAdapterFilt output files
 - Run HiFiAdapterFilt
+> **Note:** The script will not perform the Quality Control of the trimmed reads. To do so, you would need to rerun the Reads_QC.sh (*1.QualityControl*) with the new fastq file. 
+
 *** 
