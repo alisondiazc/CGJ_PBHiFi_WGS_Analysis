@@ -14,8 +14,7 @@
 - [pafr](https://github.com/dwinter/pafr) library installed and accessible in your environment
 > If you're using the LAVIS Cluster, load the programs as follows:
   ```bash
-# pbmm2 is pre-loaded in miniconda
-module load miniconda/4.3.1
+module load miniconda/4.3.1 # pbmm2 is pre-loaded in miniconda
 module load r/4.0.2
 module load python38/3.8.3
 module load mosdepth/0.3.3
