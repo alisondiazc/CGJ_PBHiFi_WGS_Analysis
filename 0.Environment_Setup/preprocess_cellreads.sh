@@ -17,7 +17,7 @@ cd "$PROJECT_DIR/Unmerged_reads"
 # Convert ubam files in reads/ to .fastq
 for bam_file in *.bam; do
   if [ -f "$bam_file" ]; then
-    bam2fastq "$bam_file"
+    bam2fastq "$bam_file" || { echo "Error converting $bam_file"; exit 1; }
     echo "Conversion from BAM to FASTQ completed."
   else
     echo "Error: No BAM files found in Raw_reads directory"
