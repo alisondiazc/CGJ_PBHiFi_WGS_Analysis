@@ -26,7 +26,7 @@ for bam_file in *.bam; do
 done
 
 # Merge all .fastq files into one
-if [ -f *.fastq ]; then
+if ls *.fastq 1> /dev/null 2>&1; then
   cat *.fastq > "${SAMPLE_NAME}_merged_reads.fastq"
   gzip "${SAMPLE_NAME}_merged_reads.fastq"
   echo "FASTQ file merging and compression completed. Concatenated file: ${SAMPLE_NAME}_merged_reads.fastq.gz"
