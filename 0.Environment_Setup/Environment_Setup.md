@@ -3,6 +3,7 @@
 
 ## Requirements 
 - [bamtofastq](https://github.com/jts/bam2fastq) program installed and accessible in your environment -> ***Only required if using Step 3***
+> **Note:** This program is not installed in the LAVIS Cluster
 *** 
 
 ## Instructions
