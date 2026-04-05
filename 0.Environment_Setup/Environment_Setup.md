@@ -14,9 +14,10 @@ Ensure to replace the text inside the brackets with the absolute path to your pr
 export PROJECT_DIR=[full path to the project main directory]
 # Example: PROJECT_DIR=/home/adiazc/PacBio-HiFi-Pipeline
 ```
-#### OPTIONAL - Make the environmental variable persistent across sessions 
-By default, environment variables are only available in the current terminal session. To make PROJECT_DIR persistent across future sessions, add it to your .bashrc file as follows 
-> **Note:** Be careful, the .bashrc file is a system configuration file and therefore sensitive to changes; ensure you have the necessary permissions and create a backup before making changes.
+#### 1.1. Make the environmental variable persistent across sessions 
+> **Note:** This step is optional and not available when using the LAVIS cluster (in that case, you would need to set the environmental variable each time before running a script in the terminal)
+> > *Be careful, the .bashrc file is a system configuration file and therefore sensitive to changes; ensure you have the necessary permissions and create a backup before making changes.
+By default, environment variables are only available in the current terminal session. To make PROJECT_DIR persistent across future sessions, you can add it to your .bashrc file as follows 
 ```bash
 # Open your .bashrc file in edit mode
 nano ~/.bashrc
