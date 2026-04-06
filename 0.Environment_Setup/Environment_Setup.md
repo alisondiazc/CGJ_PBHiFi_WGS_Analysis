@@ -48,13 +48,10 @@ mv [rawreadsfile.fastq/fastq.gz/bam] [samplename].[fastq/fastq.gz/bam]
 # Example: mv m64140_220419_014014.hifi_reads.bam PYM007.bam
 ```
 > **Important:** Sample name must not contain dots (`.`). If you need to preserve additional information in the filename, place it **after** the first dot (Example: `PYM007.m64140_220419_014014.hifi_reads.bam` → sample name: `PYM007`)
-
-
-### 3. Preprocessing of unmerged raw reads (Only for unmerged uBAM files from individual sequencing cells)
-If the sequencing reads were provided as unaligned BAM (uBAM) files, PacBio’s native format for storing reads, you’ll need to convert and merge them into a single FASTQ file to ensure compatibility with downstream analysis tools as follows: 
+### 4. Preprocessing of unmerged raw reads (Only for unmerged uBAM files from individual sequencing cells)
+If the sequencing reads were provided as unaligned BAM (uBAM) files (PacBio’s native format for storing reads), you’ll need to convert and merge them into a single FASTQ file to ensure compatibility with downstream analysis tools as follows: 
 1. Download the preprocess_cellreads.sh script from the repository and place it inside your $PROJECT_DIR/.
-2. Edit the script by opening preprocess_cellreads.sh and updating the SAMPLE_NAME variable with your sample name. Be sure to save the file before closing it.
-3. Make the script executable and run it:
+2. Make the script executable and run it:
 ```bash
 # Grant execution permissions
 chmod +x preprocess_cellreads.sh
@@ -62,7 +59,6 @@ chmod +x preprocess_cellreads.sh
 ./preprocess_cellreads.sh
 ```
 *** 
-
 ### The script will: 
 - Create a directory to place the unmerged raw reads
 - Convert ubam files to fastq format
