@@ -34,11 +34,22 @@ In this step, we download the raw read files directly from the BYU server respon
 Make sure to replace the text inside the brackets with your actual username, password, and the full URL path to each file.
 > **Note:** This step may vary depending on your data storage location and transfer method. If your files were provided through another method or format, adjust accordingly.
 ```bash
-# Navigate to the reads directory
-cd $PROJECT_DIR
+# Create raw reads directory in the main directory
+mkdir "$PROJECT_DIR/Raw_reads"
 # Download raw data (repeat for each sequencing cell file)
+cd "$PROJECT_DIR/Raw_reads"
 wget --user [USER] --password [PASSWORD] https://files.rc.byu.edu/[wholepath] 
 ```
+### 3. Rename raw reads files according to the sample name 
+The scripts used in this project extract the text before the first `.` in the raw reads filename to name all subsequent files. Therefore, the input file must be renamed before running the code as follows: 
+```bash
+cd "$PROJECT_DIR/Raw_reads"
+mv [rawreadsfile.fastq/fastq.gz/bam] [samplename].[fastq/fastq.gz/bam]
+# Example: mv m64140_220419_014014.hifi_reads.bam PYM007.bam
+```
+> **Important:** Sample name must not contain dots (`.`). If you need to preserve additional information in the filename, place it **after** the first dot (Example: `PYM007.m64140_220419_014014.hifi_reads.bam` → sample name: `PYM007`)
+
+
 ### 3. Preprocessing of unmerged raw reads (Only for unmerged uBAM files from individual sequencing cells)
 If the sequencing reads were provided as unaligned BAM (uBAM) files, PacBio’s native format for storing reads, you’ll need to convert and merge them into a single FASTQ file to ensure compatibility with downstream analysis tools as follows: 
 1. Download the preprocess_cellreads.sh script from the repository and place it inside your $PROJECT_DIR/.
